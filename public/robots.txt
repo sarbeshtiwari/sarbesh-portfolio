@@ -1,0 +1,4 @@
+user-agent: *
+Disallow:
+
+Sitemap: https://sarbesh-portfolio.vercel.app/sitemap.xml
