@@ -20,7 +20,7 @@ export default function About() {
       >
         I'm Sarbesh Kumar Tiwari, a passionate full-stack developer with a focus on MERN and cross-platform mobile app development. 
         I hold a B.Tech in Computer Science from Shri Ramswaroop Memorial University and have completed multiple internships in web, mobile, and Python development. 
-        Professionally, I've worked at Ericsson as an Associate Engineer Trainee and contributed to real-world projects across web and mobile domains. 
+        Professionally, I am working as a Full Stack Developer at Ecorp info systems pvt.ltd and contributing to real-world projects across web and mobile domains. 
         I have certifications in Machine Learning, Data Analysis, and Cybersecurity, and love working on creative and AI-driven side projects."
       </motion.p>
 
