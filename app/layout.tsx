@@ -5,62 +5,91 @@ import { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
-  title: 'Sarbesh Kumar Tiwari | Portfolio',
-  description: 'MERN Developer | Mobile App Developer | Python Enthusiast',
-  robots: "max-image-preview:large, index, follow",
-  alternates: {
-    canonical: "https://sarbesh-portfolio.vercel.app/",
+  metadataBase: new URL('https://sarbeshtiwari.vercel.app'),
+  title: {
+    default: 'Sarbesh Kumar Tiwari | Full Stack Developer',
+    template: '%s | Sarbesh Kumar Tiwari',
+  },
+  description: 'Full Stack Developer with 2+ years of experience in MERN stack, Python, React, Next.js, AWS. Building production-grade web applications, mobile apps, and AI-driven solutions.',
+  keywords: [
+    'Full Stack Developer',
+    'MERN Stack',
+    'React Developer',
+    'Next.js Developer',
+    'Python Developer',
+    'Node.js Developer',
+    'Flutter Developer',
+    'AWS Developer',
+    'MongoDB',
+    'MySQL',
+    'Full Stack Developer India',
+    'Full Stack Developer Noida',
+    'Web Developer',
+    'Mobile App Developer',
+    'Freelance Developer',
+  ],
+  authors: [{ name: 'Sarbesh Kumar Tiwari' }],
+  creator: 'Sarbesh Kumar Tiwari',
+  publisher: 'Sarbesh Kumar Tiwari',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
   openGraph: {
-    title: 'Sarbesh Kumar Tiwari | Portfolio',
-    description: 'MERN Developer | Mobile App Developer | Python Enthusiast',
-    url: 'https://sarbesh-portfolio.vercel.app/',
-    site_name: 'Sarbesh Kumar Tiwari',
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://sarbeshtiwari.vercel.app',
+    siteName: 'Sarbesh Kumar Tiwari',
+    title: 'Sarbesh Kumar Tiwari | Full Stack Developer',
+    description: 'Full Stack Developer with 2+ years of experience in MERN stack, Python, React, Next.js, AWS. Building production-grade web applications.',
     images: [
       {
-        url: 'https://sarbesh-portfolio.vercel.app/og-image.jpg',
+        url: '/og-image.svg',
         width: 1200,
         height: 630,
-        alt: 'Sarbesh Kumar Tiwari Portfolio Preview Image',
-      }
+        alt: 'Sarbesh Kumar Tiwari - Full Stack Developer',
+      },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sarbesh Kumar Tiwari | Portfolio',
-    description: 'MERN Developer | Mobile App Developer | Python Enthusiast',
-    image: 'https://sarbesh-portfolio.vercel.app/og-image.jpg',
+    title: 'Sarbesh Kumar Tiwari | Full Stack Developer',
+    description: 'Full Stack Developer with 2+ years of experience in MERN stack, Python, React, Next.js, AWS.',
     creator: '@sarbeshtiwari',
+    images: ['/og-image.svg'],
   },
-  meta: {
-    charset: 'UTF-8',
-    viewport: 'width=device-width, initial-scale=1',
-    author: 'Sarbesh Kumar Tiwari',
-    'theme-color': '#1d4ed8',
-  },
-  jsonLd: {
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Sarbesh Kumar Tiwari',
-    url: 'https://sarbesh-portfolio.vercel.app/',
-    sameAs: [
-      'https://www.linkedin.com/in/sarbeshkumartiwari/',
-      'https://github.com/sarbeshkumar',
-    ],
-    jobTitle: 'MERN Developer | Mobile App Developer | Python Enthusiast',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Self-Employed',
+  alternates: {
+    canonical: 'https://sarbeshtiwari.vercel.app',
+    languages: {
+      en: 'https://sarbeshtiwari.vercel.app',
     },
   },
-};
+  verification: {
+    google: 'EML1vh2mWaTVeo-4ltN28peNm262eeyjqmNjxJURu_U',
+  },
+}
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-gradient-to-br from-gray-50 to-blue-100 text-gray-800 font-sans">
+      <head>
+        <meta name="google-site-verification" content="EML1vh2mWaTVeo-4ltN28peNm262eeyjqmNjxJURu_U" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/favicon.svg" />
+      </head>
+      <body>
         <Navbar />
-        <main className="pt-20 px-4 md:px-20">{children}</main>
+        <main>{children}</main>
         <Analytics />
         <Footer />
       </body>

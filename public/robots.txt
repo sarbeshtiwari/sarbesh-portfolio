@@ -1,4 +1,4 @@
-user-agent: *
-Disallow:
+User-agent: *
+Allow: /
 
-Sitemap: https://sarbesh-portfolio.vercel.app/sitemap.xml
+Sitemap: https://sarbeshtiwari.vercel.app/sitemap.xml
