@@ -2,7 +2,7 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import './globals.css'
 import { ReactNode } from "react";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata = {
   metadataBase: new URL('https://sarbeshtiwari.vercel.app'),
