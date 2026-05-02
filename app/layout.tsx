@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import './globals.css'
 import { ReactNode } from "react";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata = {
   metadataBase: new URL('https://sarbeshtiwari.vercel.app'),
@@ -91,6 +92,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <Navbar />
         <main>{children}</main>
         <Analytics />
+        <SpeedInsights />
         <Footer />
       </body>
     </html>
