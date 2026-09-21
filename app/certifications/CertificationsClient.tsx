@@ -1,74 +1,127 @@
-'use client'
-
-import { useState } from 'react'
-
-const certs = [
-  { name: 'Smart India Hackathon Finalist', issued: 'Gov. of India - SIH 2022', image: '/assets/certs/1665763375951.jpg', category: 'Achievement' },
-  { name: 'Flutter & Dart', issued: 'Udemy', image: '/assets/certs/UC-30ed9331-1fd2-45cf-ae51-f48805ad8d3b.jpg', category: 'Mobile Dev' },
-  { name: 'Android Bug Bounty Hunting', issued: 'EC-Council', image: '/assets/certs/2140d980-ff9b-41d5-ab51-3eb8b817d2a7.png', category: 'Cybersecurity' },
-  { name: 'Big Data', issued: 'IBM', image: '/assets/certs/Big Data_page-0001.jpg', category: 'Data Science' },
-  { name: 'Hadoop', issued: 'IBM', image: '/assets/certs/Hadoop_page-0001.jpg', category: 'Data Science' },
-  { name: 'Machine Learning', issued: 'IBM', image: '/assets/certs/machine learning_page-0001.jpg', category: 'AI/ML' },
-  { name: 'SQL and Relational Databases', issued: 'IBM', image: '/assets/certs/sql_certificate.jpg', category: 'Database' },
-  { name: 'AWS Cloud Practitioner', issued: 'Amazon Web Services', image: '/assets/certs/aws.png', category: 'Cloud' },
-  { name: 'Introduction to Cyber Security', issued: 'Cisco', image: '/assets/certs/cisco_cyber.jpg', category: 'Cybersecurity' },
-  { name: 'SQL Injection Attacks', issued: 'EC-Council', image: '/assets/certs/sql_injection.jpg', category: 'Cybersecurity' },
-  { name: 'HTML, CSS, and JavaScript', issued: 'Coursera', image: '/assets/certs/html_css_js.jpg', category: 'Web Dev' },
-  { name: 'Data Science Foundations', issued: 'IBM', image: '/assets/certs/data_science.jpg', category: 'Data Science' },
-  { name: 'Python for Data Science', issued: 'IBM', image: '/assets/certs/python_ds.jpg', category: 'Data Science' },
-  { name: 'React - The Complete Guide', issued: 'Udemy', image: '/assets/certs/react_complete.jpg', category: 'Frontend' },
-  { name: 'Node.js Developer Course', issued: 'Udemy', image: '/assets/certs/nodejs_course.jpg', category: 'Backend' },
-]
-
+"use client";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { certs } from "../data/certifications";
+import { Icon } from "../components/ui";
 export default function CertificationsClient() {
-  const [selectedCert, setSelectedCert] = useState<typeof certs[0] | null>(null)
-  const [filter, setFilter] = useState('all')
-
-  const categories = ['all', 'Achievement', 'Mobile Dev', 'Cybersecurity', 'Data Science', 'AI/ML', 'Database', 'Cloud', 'Web Dev', 'Frontend', 'Backend']
-  const filtered = filter === 'all' ? certs : certs.filter(c => c.category === filter)
-
+  const [filter, setFilter] = useState("All");
+  const [selected, setSelected] = useState<(typeof certs)[number] | null>(null);
+  const [imageIndex, setImageIndex] = useState(0);
+  const dialog = useRef<HTMLDialogElement>(null);
+  const images = selected
+    ? [
+        { image: selected.image, label: "Certificate" },
+        ...selected.relatedImages,
+      ]
+    : [];
+  const currentImage = images[imageIndex];
+  const categories = ["All", ...new Set(certs.map((c) => c.category))];
+  useEffect(() => {
+    if (selected) dialog.current?.showModal();
+    else dialog.current?.close();
+  }, [selected]);
   return (
-    <div className="page-container">
-      <div className="container">
-        <div className="section-header">
-          <span className="section-label">Certifications</span>
-          <h2>Skills<span className="gradient-text"> certified</span></h2>
-          <p>Continuous learning and professional development.</p>
+    <>
+      <div className="filters" role="group" aria-label="Filter certifications">
+        {categories.map((cat) => (
+          <button
+            key={cat}
+            className={`filter-btn ${filter === cat ? "active" : ""}`}
+            aria-pressed={filter === cat}
+            onClick={() => setFilter(cat)}
+          >
+            {cat}
+          </button>
+        ))}
+      </div>
+      <div className="cert-grid">
+        {certs
+          .filter((c) => filter === "All" || c.category === filter)
+          .map((cert) => {
+            const content = (
+              <>
+                <div className="cert-image">
+                  <Image
+                    src={cert.image}
+                    alt={cert.name + " certificate"}
+                    fill
+                    sizes="(max-width: 640px) 46vw, (max-width: 900px) 44vw, 350px"
+                  />
+                </div>
+                <div className="cert-info">
+                  <span className="small-label">{cert.category}</span>
+                  <h2>{cert.name}</h2>
+                  <p>
+                    {cert.issued}
+                    {" · View certificate ↗"}
+                    {cert.relatedImages.length > 0 &&
+                      ` · ${cert.relatedImages.length + 1} images`}
+                  </p>
+                </div>
+              </>
+            );
+            return (
+              <article className="cert-card" key={cert.name}>
+                <button
+                  onClick={() => {
+                    setImageIndex(0);
+                    setSelected(cert);
+                  }}
+                  aria-label={`View ${cert.name} certificate`}
+                >
+                  {content}
+                </button>
+              </article>
+            );
+          })}
+      </div>
+      <dialog
+        ref={dialog}
+        className="cert-dialog"
+        aria-labelledby="certificate-title"
+        onClose={() => setSelected(null)}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) setSelected(null);
+        }}
+      >
+        <div className="dialog-header">
+          <h2 id="certificate-title">{selected?.name}</h2>
+          <button
+            onClick={() => setSelected(null)}
+            aria-label="Close certificate"
+          >
+            <Icon name="close" />
+          </button>
         </div>
-
-        <div className="filters">
-          {categories.map((cat) => (
-            <button key={cat} onClick={() => setFilter(cat)} className={`filter-btn ${filter === cat ? 'active' : ''}`}>
-              {cat}
-            </button>
-          ))}
-        </div>
-
-        <div className="certs-grid">
-          {filtered.map((cert, idx) => (
-            <div key={idx} className="cert-card" onClick={() => setSelectedCert(cert)} style={{ cursor: 'pointer' }}>
-              <div className="cert-image">
-                <img src={cert.image} alt={cert.name} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '0.5rem' }} />
-              </div>
-              <h4 className="cert-name">{cert.name}</h4>
-              <p className="cert-issuer">{cert.issued}</p>
-              <span className="cert-category">{cert.category}</span>
-            </div>
-          ))}
-        </div>
-
-        {selectedCert && (
-          <div className="modal-overlay" onClick={() => setSelectedCert(null)}>
-            <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-              <button className="modal-close" onClick={() => setSelectedCert(null)}>×</button>
-              <img src={selectedCert.image} alt={selectedCert.name} style={{ width: '100%', maxHeight: '70vh', objectFit: 'contain', borderRadius: '0.5rem' }} />
-              <h3 style={{ marginTop: '1rem', color: '#f1f5f9' }}>{selectedCert.name}</h3>
-              <p style={{ color: '#94a3b8' }}>{selectedCert.issued}</p>
-              <span style={{ display: 'inline-block', marginTop: '0.5rem', padding: '0.25rem 0.75rem', background: 'rgba(168,85,247,0.1)', borderRadius: '0.25rem', color: '#a855f7', fontSize: '0.875rem' }}>{selectedCert.category}</span>
-            </div>
+        {images.length > 1 && (
+          <div
+            className="filters"
+            role="group"
+            aria-label="Certificate pages and badges"
+          >
+            {images.map((item, index) => (
+              <button
+                key={item.image}
+                className={`filter-btn ${index === imageIndex ? "active" : ""}`}
+                aria-pressed={index === imageIndex}
+                onClick={() => setImageIndex(index)}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
         )}
-      </div>
-    </div>
-  )
+        {selected && currentImage && (
+          <div className="dialog-image">
+            <Image
+              src={currentImage.image}
+              alt={`${selected.name} — ${currentImage.label}`}
+              fill
+              sizes="850px"
+            />
+          </div>
+        )}
+      </dialog>
+    </>
+  );
 }

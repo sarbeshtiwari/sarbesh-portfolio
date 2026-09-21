@@ -1,106 +1,58 @@
-<div align="center">
+# Sarbesh Kumar Tiwari — Portfolio
 
-# Sarbesh Kumar Tiwari - Portfolio
+A light-first AI/ML and full-stack engineering portfolio built with Next.js 15 App Router, React 19, TypeScript, and Tailwind 4/custom CSS.
 
-A modern, interactive portfolio built with Next.js 15, Three.js, and Tailwind CSS.
+## Local development
 
-**[sarbeshtiwari.com](https://sarbeshtiwari.com)**
-
-</div>
-
----
-
-## Overview
-
-Full Stack Developer portfolio featuring interactive 3D graphics, responsive design, and a dark theme with purple/cyan accents. Built from scratch with modern technologies.
-
-## Tech Stack
-
-| Layer | Technologies |
-|-------|-------------|
-| **Framework** | Next.js 15 (App Router), React 19, TypeScript |
-| **3D Graphics** | Three.js, React Three Fiber, Drei |
-| **Styling** | Tailwind CSS, custom CSS with glassmorphism |
-| **Email** | Nodemailer (Gmail SMTP) |
-| **Deployment** | Vercel |
-| **Analytics** | Vercel Analytics |
-
-## Features
-
-- **Interactive 3D Hero** -- Floating glowing orbs, code brackets, and particle effects that respond to mouse movement
-- **Responsive Design** -- Fully optimized for mobile, tablet, and desktop
-- **Project Showcase** -- Filterable project grid with detailed descriptions and tech stacks
-- **Experience Timeline** -- Professional journey with work history and education
-- **Certifications** -- Display of achievements and professional certifications
-- **Contact Form** -- Working contact form with server-side email delivery
-- **SEO Optimized** -- OpenGraph, Twitter cards, sitemap.xml, robots.txt
-- **Dark Theme** -- Modern dark palette with purple (#a855f7) and cyan (#22d3ee) accents
-
-## Project Structure
-
-```
-app/
-  layout.tsx              # Root layout with fonts, metadata, SEO
-  page.tsx                # Home with 3D hero, stats, featured work
-  globals.css             # Design system, animations, theme
-  about/page.tsx          # Bio, skill bars, journey timeline
-  projects/page.tsx       # Filterable project grid
-  experience/page.tsx     # Work timeline + education
-  certifications/page.tsx # Certifications grid with filters
-  contact/page.tsx        # Contact form + info
-  thank-you/page.tsx     # Confirmation page
-  api/sendQuery/          # Email API endpoint
-  components/
-    HeroScene.tsx         # Three.js 3D background
-    HeroWrapper.tsx       # Client-side hero wrapper
-    Navbar.tsx            # Navigation with social links
-    Footer.tsx            # Footer with links
-public/
-  favicon.svg             # Custom favicon
-  og-image.svg            # Social sharing image
-  assets/certs/           # Resume and certifications
-```
-
-## Getting Started
-
-```bash
-# Install dependencies
+```sh
 npm install
-
-# Run development server
 npm run dev
-
-# Build for production
+npm run types
 npm run build
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site.
+The default preview runs at http://localhost:3000. Use `npm run dev -- --port 3100` for an alternative port. No deployment or Git commit is required.
 
-### Environment Variables
+## Content and architecture
 
-Create a `.env.local` file for the contact form:
+- `app/data/portfolio.ts`: original project and experience records, social links, and categorized technologies.
+- `app/data/certifications.ts`: asset-backed credentials and verified certificate paths. All 26 certificate scans, badges, and continuation pages are grouped into 19 credentials with selectable preview images.
+- `app/components/PortfolioSections.tsx`: server-rendered homepage sections, shared with the About and Experience routes.
+- `app/components/EngineeringMap.tsx`: keyboard/touch-enabled capability diagram.
+- `app/components/LoadingScreen.tsx`: first-session intro, driven by hydration and font readiness. No minimum hold; a 1.2-second font deadline prevents blocking. Reduced motion bypasses it. Storage failures are harmless.
+- `app/components/Reveal.tsx`: progressive scroll reveals using IntersectionObserver. Content remains visible without JavaScript.
+- `app/components/ProjectVisual.tsx`: lightweight CSS concept illustrations, explicitly labeled as concepts rather than real screenshots.
+- `app/globals.css`: shared light design system, responsive layouts, and reduced-motion rules.
+- `public/fonts/`: self-hosted Inter and JetBrains Mono variable fonts (Latin subsets), loaded with `next/font/local`; licenses included.
+- `app/opengraph-image.tsx`: generated PNG social-sharing image.
+- `app/api/sendQuery/route.ts`: existing Gmail/Nodemailer transport, with input validation and authenticated sender/reply-to handling.
+
+The original About, Experience, Projects, Certifications, Contact, and Thank-you routes remain accessible. All 15 project records and four work roles are retained. Placeholder project URLs are not rendered as links. Existing GitHub profile links are labeled as profile links.
+
+The homepage no longer loads a continuous WebGL scene. Motion uses CSS and IntersectionObserver; unused Three.js, React Three Fiber, Drei, and Framer Motion packages have been removed. Vercel Analytics and Speed Insights remain enabled on Vercel deployments; local previews skip their platform-only endpoints.
+
+## Email configuration
+
+Create `.env.local` with:
 
 ```env
 GMAIL_USER=your-email@gmail.com
-GMAIL_PASS=your-app-password
+GMAIL_PASS=your-gmail-app-password
 ```
 
-## Deployment
+Without credentials the API returns HTTP 503 and the form offers a direct-email alternative. Email addresses and form values are never included in server error logs. The confirmation page provides an explicit return link instead of a timed redirect.
 
-Deployed on [Vercel](https://vercel.com). Push to `main` to trigger automatic deployments.
+## Design and verification
 
-## Performance
+See [DESIGN.md](DESIGN.md) for the audit, content constraints, and visual system.
 
-- Static generation for all pages except the API route
-- Dynamic imports for the 3D scene (no SSR overhead)
-- Optimized images and assets
+`scripts/verify-portfolio.cjs` runs browser checks against a running local server. It uses Playwright Core and installed Chrome. Supply `PLAYWRIGHT_PATH` if Playwright is available outside this repository; set `PORTFOLIO_URL` to override http://localhost:3100. It checks responsive overflow, navigation, filters, dialogs, image decoding, reduced motion, local links, API validation, and contact UI states. Form success/error responses are mocked, so this does not send email.
 
-## Connect
+Generated screenshots and verification output live in the ignored `artifacts/` directory. No live SMTP delivery is claimed by the browser tests.
 
-- **LinkedIn**: [linkedin.com/in/sarbeshtiwari](https://linkedin.com/in/sarbeshtiwari)
-- **GitHub**: [github.com/sarbeshtiwari](https://github.com/sarbeshtiwari)
-- **Email**: tiwarisarbesh02@gmail.com
+## SEO
 
-## License
+`app/data/site.ts` defines the canonical host and page-specific search/social titles and descriptions. Next.js generates the sitemap and robots.txt from that source. Person and WebSite structured data identify the portfolio and its author; the confirmation page remains noindex. The existing host, https://sarbeshtiwari.vercel.app, and Google verification token are preserved. Change `site.url` when moving to a custom domain.
 
-MIT
+The favicon set includes a vector monogram, a multi-resolution ICO (16/32/48px), a 180px Apple touch icon, and 192/512px manifest icons. Social previews use the generated 1200?630 PNG.

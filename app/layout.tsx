@@ -1,100 +1,143 @@
-import Footer from './components/Footer';
-import Navbar from './components/Navbar';
-import './globals.css'
-import { ReactNode } from "react";
-import { Analytics } from "@vercel/analytics/next"
-import { SpeedInsights } from "@vercel/speed-insights/next"
-
-export const metadata = {
-  metadataBase: new URL('https://sarbeshtiwari.vercel.app'),
-  title: {
-    default: 'Sarbesh Kumar Tiwari | Full Stack Developer',
-    template: '%s | Sarbesh Kumar Tiwari',
-  },
-  description: 'Full Stack Developer with 2+ years of experience in MERN stack, Python, React, Next.js, AWS. Building production-grade web applications, mobile apps, and AI-driven solutions.',
+import type { Metadata, Viewport } from "next";
+import type { ReactNode } from "react";
+import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import LoadingScreen from "./components/LoadingScreen";
+import "./globals.css";
+import { site } from "./data/site";
+const inter = localFont({
+  src: "../public/fonts/inter-latin.woff2",
+  variable: "--font-inter",
+  weight: "400 700",
+  display: "swap",
+});
+const jetbrains = localFont({
+  src: "../public/fonts/jetbrains-mono-latin.woff2",
+  variable: "--font-jetbrains",
+  weight: "400 500",
+  display: "swap",
+  preload: false,
+});
+const { title, description } = site;
+export const viewport: Viewport = {
+  themeColor: "#faf9f6",
+  colorScheme: "light",
+};
+export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
+  title: { default: title, template: "%s | Sarbesh Kumar Tiwari" },
+  description,
   keywords: [
-    'Full Stack Developer',
-    'MERN Stack',
-    'React Developer',
-    'Next.js Developer',
-    'Python Developer',
-    'Node.js Developer',
-    'Flutter Developer',
-    'AWS Developer',
-    'MongoDB',
-    'MySQL',
-    'Full Stack Developer India',
-    'Full Stack Developer Noida',
-    'Web Developer',
-    'Mobile App Developer',
-    'Freelance Developer',
+    "Sarbesh Kumar Tiwari",
+    "AI ML Engineer",
+    "Full Stack Developer",
+    "Python",
+    "TensorFlow",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Flutter",
+    "AWS",
   ],
-  authors: [{ name: 'Sarbesh Kumar Tiwari' }],
-  creator: 'Sarbesh Kumar Tiwari',
-  publisher: 'Sarbesh Kumar Tiwari',
+  authors: [{ name: "Sarbesh Kumar Tiwari" }],
+  creator: "Sarbesh Kumar Tiwari",
+  publisher: site.name,
+  applicationName: "Sarbesh Tiwari Portfolio",
+  category: "technology",
+  manifest: "/manifest.webmanifest",
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
     },
   },
   openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://sarbeshtiwari.vercel.app',
-    siteName: 'Sarbesh Kumar Tiwari',
-    title: 'Sarbesh Kumar Tiwari | Full Stack Developer',
-    description: 'Full Stack Developer with 2+ years of experience in MERN stack, Python, React, Next.js, AWS. Building production-grade web applications.',
-    images: [
-      {
-        url: '/og-image.svg',
-        width: 1200,
-        height: 630,
-        alt: 'Sarbesh Kumar Tiwari - Full Stack Developer',
-      },
-    ],
+    type: "website",
+    locale: "en_IN",
+    siteName: "Sarbesh Kumar Tiwari",
+    title,
+    description,
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Sarbesh Kumar Tiwari | Full Stack Developer',
-    description: 'Full Stack Developer with 2+ years of experience in MERN stack, Python, React, Next.js, AWS.',
-    creator: '@sarbeshtiwari',
-    images: ['/og-image.svg'],
+  twitter: { card: "summary_large_image", title, description },
+  icons: {
+    icon: [{ url: "/favicon.svg?v=2", type: "image/svg+xml", sizes: "any" }],
+    shortcut: "/favicon.ico?v=2",
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
-  alternates: {
-    canonical: 'https://sarbeshtiwari.vercel.app',
-    languages: {
-      en: 'https://sarbeshtiwari.vercel.app',
+  verification: { google: "EML1vh2mWaTVeo-4ltN28peNm262eeyjqmNjxJURu_U" },
+};
+const person = {
+  "@type": "Person",
+  "@id": `${site.url}/#person`,
+  name: "Sarbesh Kumar Tiwari",
+  url: site.url,
+  jobTitle: "Full Stack Developer",
+  description,
+  sameAs: [
+    "https://github.com/sarbeshtiwari",
+    "https://www.linkedin.com/in/sarbeshtiwari",
+  ],
+  knowsAbout: [
+    "Full-stack development",
+    "Machine learning",
+    "Computer vision",
+    "Mobile development",
+  ],
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Shri Ramswaroop Memorial University",
+  },
+};
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    person,
+    {
+      "@type": "WebSite",
+      "@id": `${site.url}/#website`,
+      url: site.url,
+      name: site.title,
+      description: site.description,
+      inLanguage: "en-IN",
+      author: { "@id": `${site.url}/#person` },
     },
-  },
-  verification: {
-    google: 'EML1vh2mWaTVeo-4ltN28peNm262eeyjqmNjxJURu_U',
-  },
-}
-
+  ],
+};
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <meta name="google-site-verification" content="EML1vh2mWaTVeo-4ltN28peNm262eeyjqmNjxJURu_U" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/favicon.svg" />
-      </head>
-      <body>
+      <body className={`${inter.variable} ${jetbrains.variable}`}>
+        <div id="top" />
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
+        <LoadingScreen />
         <Navbar />
-        <main>{children}</main>
-        <Analytics />
-        <SpeedInsights />
+        <main id="main-content" tabIndex={-1}>
+          {children}
+        </main>
         <Footer />
+        {process.env.VERCEL === "1" && (
+          <>
+            <Analytics />
+            <SpeedInsights />
+          </>
+        )}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData).replace(/</g, "\\u003c"),
+          }}
+        />
       </body>
     </html>
-  )
+  );
 }

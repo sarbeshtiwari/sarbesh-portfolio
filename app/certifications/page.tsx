@@ -1,13 +1,21 @@
-import { Metadata } from 'next'
-import CertificationsClient from './CertificationsClient'
-
-export function generateMetadata(): Metadata {
-  return {
-    title: 'Certifications',
-    description: 'Certifications and achievements of Sarbesh Kumar Tiwari - Smart India Hackathon Finalist, AWS, SQL, Flutter, Android Bug Bounty Hunting, Big Data, Hadoop, and more.',
-  }
-}
-
+import { pageMetadata } from "../data/site";
+import Link from "next/link";
+import CertificationsClient from "./CertificationsClient";
+export const metadata = pageMetadata("/certifications");
 export default function Certifications() {
-  return <CertificationsClient />
+  return (
+    <div className="page-container container">
+      <div className="page-header">
+        <Link href="/#about">← Back to the portfolio</Link>
+        <div className="eyebrow">CONTINUOUSLY LEARNING</div>
+        <h1>Curiosity, with credentials.</h1>
+        <p>
+          Learning across disciplines, from machine learning and data science to
+          software development. Explore the certificates and achievements behind
+          the work.
+        </p>
+      </div>
+      <CertificationsClient />
+    </div>
+  );
 }

@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#0f172a"/>
-  <rect x="0" y="0" width="1200" height="630" fill="url(#grad)"/>
-  <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
-    </linearGradient>
-  </defs>
-  <circle cx="600" cy="280" r="120" fill="#a855f7" opacity="0.2"/>
-  <text x="600" y="300" font-family="Arial, sans-serif" font-size="120" font-weight="bold" fill="#a855f7" text-anchor="middle">S</text>
-  <text x="600" y="420" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#f1f5f9" text-anchor="middle">Sarbesh Kumar Tiwari</text>
-  <text x="600" y="470" font-family="Arial, sans-serif" font-size="24" fill="#94a3b8" text-anchor="middle">Full Stack Developer</text>
-  <text x="600" y="520" font-family="Arial, sans-serif" font-size="20" fill="#64748b" text-anchor="middle">MERN Stack | Python | React | AWS</text>
-  <rect x="500" y="550" width="200" height="4" rx="2" fill="#a855f7"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"><rect width="1200" height="630" fill="#faf9f6"/><rect x="80" y="60" width="58" height="58" rx="13" fill="#202329"/><text x="93" y="102" fill="#fff" font-family="Arial,sans-serif" font-size="36" font-weight="600">st.</text><text x="160" y="98" font-family="Arial,sans-serif" font-size="25" fill="#202329">Sarbesh Kumar Tiwari</text><text x="80" y="315" font-family="Arial,sans-serif" font-size="82" fill="#202329" letter-spacing="-4">Engineering what's next.</text><text x="80" y="380" font-family="Arial,sans-serif" font-size="25" fill="#6352cc">AI / ML ENGINEER + FULL-STACK DEVELOPER</text><path d="M80 505h1040" stroke="#e5e3e8"/><text x="80" y="558" font-family="Arial,sans-serif" font-size="21" fill="#62656e">Intelligent systems. Thoughtful experiences.</text></svg>
