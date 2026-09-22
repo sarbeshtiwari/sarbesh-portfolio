@@ -138,7 +138,7 @@ export const projects = [
 export const experiences = [
   {
     role: "Full Stack Developer",
-    company: "Quess Corp X Ethara.ai",
+    company: "Quess Corp",
     location: "Gurugram, India",
     period: "Feb 2026 - Present",
     description: [

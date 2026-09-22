@@ -14,9 +14,7 @@ export default async function Projects({
         <Link href="/#projects">← Back to selected work</Link>
         <div className="eyebrow">THE PROJECT ARCHIVE</div>
         <h1>
-          Many ideas.
-          <br />
-          One engineering mindset.
+          My projects.
         </h1>
         <p>
           Production platforms, mobile experiences, and personal experiments. A

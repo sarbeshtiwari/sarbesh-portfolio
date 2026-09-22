@@ -150,44 +150,4 @@ export const certs: Certificate[] = [
       "/assets/certs/Sarbesh Kumar Tiwari_IBM CEPYT1IN Certificate_page-0001.jpg",
     relatedImages: [],
   },
-  {
-    name: "Chegg Honor Code",
-    issued: "Chegg",
-    category: "Expert Training",
-    image:
-      "/assets/certs/certificate-of-completion-for-honor-code-violation_page-0001.jpg",
-    relatedImages: [],
-  },
-  {
-    name: "Mastering the Guidelines",
-    issued: "Chegg",
-    category: "Expert Training",
-    image:
-      "/assets/certs/certificate-of-completion-for-mastering-the-guidelines_page-0001.jpg",
-    relatedImages: [],
-  },
-  {
-    name: "Q&A Best Practices",
-    issued: "Chegg",
-    category: "Expert Training",
-    image:
-      "/assets/certs/certificate-of-completion-for-q-a-best-practices_page-0001.jpg",
-    relatedImages: [],
-  },
-  {
-    name: "Solving International Questions",
-    issued: "Chegg",
-    category: "Expert Training",
-    image:
-      "/assets/certs/certificate-of-completion-for-solving-international-questions_page-0001.jpg",
-    relatedImages: [],
-  },
-  {
-    name: "Welcome Training for New Experts",
-    issued: "Chegg",
-    category: "Expert Training",
-    image:
-      "/assets/certs/certificate-of-completion-for-welcome-training-for-new-experts_page-0001.jpg",
-    relatedImages: [],
-  },
 ];

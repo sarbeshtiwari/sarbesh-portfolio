@@ -17,7 +17,7 @@ The default preview runs at http://localhost:3000. Use `npm run dev -- --port 31
 ## Content and architecture
 
 - `app/data/portfolio.ts`: original project and experience records, social links, and categorized technologies.
-- `app/data/certifications.ts`: asset-backed credentials and verified certificate paths. All 26 certificate scans, badges, and continuation pages are grouped into 19 credentials with selectable preview images.
+- `app/data/certifications.ts`: asset-backed credentials and verified certificate paths. All 21 certificate scans, badges, and continuation pages are grouped into 14 credentials with selectable preview images.
 - `app/components/PortfolioSections.tsx`: server-rendered homepage sections, shared with the About and Experience routes.
 - `app/components/EngineeringMap.tsx`: keyboard/touch-enabled capability diagram.
 - `app/components/LoadingScreen.tsx`: first-session intro, driven by hydration and font readiness. No minimum hold; a 1.2-second font deadline prevents blocking. Reduced motion bypasses it. Storage failures are harmless.

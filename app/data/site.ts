@@ -26,13 +26,13 @@ export const publicPages = [
     path: "/experience",
     title: "Engineering Experience",
     description:
-      "Explore Sarbesh Kumar Tiwari’s engineering work at Quess Corp × Ethara.ai, Ecorp Infosystems, Aayan India, and iWashhub, plus his Data Science & AI education.",
+      "Explore Sarbesh Kumar Tiwari’s engineering work at Quess Corp, Ecorp Infosystems, Aayan India, and iWashhub, plus his Data Science & AI education.",
   },
   {
     path: "/certifications",
     title: "Certifications & Achievements",
     description:
-      "View Sarbesh Kumar Tiwari’s 19 credentials, including IBM machine learning, Python, SQL, Flutter, and Smart India Hackathon, with certificate scans and badges.",
+      "View Sarbesh Kumar Tiwari’s 14 credentials, including IBM machine learning, Python, SQL, Flutter, and Smart India Hackathon, with certificate scans and badges.",
   },
   {
     path: "/contact",

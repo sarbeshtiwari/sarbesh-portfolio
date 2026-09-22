@@ -13,7 +13,7 @@ export default function Footer() {
               </span>
               Sarbesh Tiwari.
             </Link>
-            <p>Intelligent systems. Thoughtful experiences.</p>
+            <p>My work, experience, and experiments with code.</p>
           </div>
           <div className="footer-links">
             <Link href="/projects">Projects</Link>
@@ -31,7 +31,7 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Sarbesh Kumar Tiwari</span>
-          <span>Built with intent. Always evolving.</span>
+          <span>Made by Sarbesh in Noida, India.</span>
           <a href="#top">
             Back to top <Icon name="arrow" className="up-arrow" />
           </a>

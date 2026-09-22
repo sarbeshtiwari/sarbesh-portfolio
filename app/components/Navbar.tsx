@@ -4,12 +4,10 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Icon } from "./ui";
 const sections = [
-  "Home",
-  "About",
-  "Skills",
-  "Experience",
   "Projects",
-  "AI/ML",
+  "About",
+  "Experience",
+  "Skills",
   "Contact",
 ];
 const idFor = (label: string) =>
@@ -91,9 +89,6 @@ export default function Navbar() {
           aria-label="Sarbesh Tiwari home"
           onClick={() => setOpen(false)}
         >
-          <span className="monogram">
-            st<span>.</span>
-          </span>
           <span>
             Sarbesh Tiwari<span className="brand-dot">.</span>
           </span>
@@ -114,7 +109,7 @@ export default function Navbar() {
               key={label}
               href={`/#${idFor(label)}`}
               aria-current={active === idFor(label) ? "location" : undefined}
-              className={`nav-link ${active === idFor(label) ? "active" : ""} ${label === "Contact" ? "nav-contact" : ""}`}
+              className={`nav-link ${active === idFor(label) ? "active" : ""} `}
               onClick={() => {
                 setOpen(false);
                 setActive(idFor(label));

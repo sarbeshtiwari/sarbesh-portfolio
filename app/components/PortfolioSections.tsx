@@ -11,19 +11,19 @@ export function AboutSection() {
     <section id="about" className="section container">
       <Reveal>
         <SectionHeading
-          number="01"
-          label="THE PERSON BEHIND THE CODE"
-          title="Curiosity meets engineering."
+          number="02"
+          label="ABOUT ME"
+          title="A little about my background."
         />
         <div className="about-grid">
           <div className="about-statement">
             <span className="small-label">A LITTLE ABOUT ME</span>
             <h3>
-              I connect the dots between
+              I started with data science.
               <br />
-              intelligent systems and
+              I kept coming back to
               <br />
-              <em>real-world experiences.</em>
+              <em>building things with code.</em>
             </h3>
             <p>
               I'm Sarbesh Kumar Tiwari, a developer based in Noida, India, with
@@ -32,7 +32,7 @@ export function AboutSection() {
               it work.
             </p>
             <p>
-              At Quess Corp × Ethara.ai, I work on interactive AI gaming
+              At Quess Corp, I work on interactive AI gaming
               platforms, authentication, and puzzle experiences. My work brings
               together a foundation in machine learning and hands-on product
               engineering.
@@ -41,26 +41,16 @@ export function AboutSection() {
               Get my résumé <Icon name="down" />
             </a>
           </div>
-          <div className="identity-grid">
-            <div className="identity-card">
-              <Icon name="nodes" />
-              <h4>Intelligence with purpose</h4>
-              <p>Computer vision, AI gaming, and data-driven experiences.</p>
-            </div>
-            <div className="identity-card">
-              <Icon name="code" />
-              <h4>Built end to end</h4>
-              <p>Web and mobile interfaces, APIs, databases, and deployment.</p>
-            </div>
-            <div className="identity-card identity-wide">
-              <span className="small-label">MY APPROACH</span>
-              <p>
-                Understand the problem. Build with clarity.
-                <br />
-                <strong>Make every layer work together.</strong>
-              </p>
-            </div>
-          </div>
+          <aside className="background-note">
+            <span className="small-label">MY PATH SO FAR</span>
+            <h3>From the classroom to working applications.</h3>
+            <p>I studied Data Science & Artificial Intelligence at Shri Ramswaroop
+              Memorial University from 2020 to 2024. Along the way, I worked on
+              Flutter apps, web development, and machine learning projects.</p>
+            <p>Since then, my work has taken me across frontend interfaces,
+              backend APIs, cloud deployment, and interactive AI games.</p>
+            <Link className="text-link" href="/experience">Read my experience <Icon name="arrow" /></Link>
+          </aside>
         </div>
         <div className="credential-line">
           <span>
@@ -81,10 +71,10 @@ export function SkillsSection() {
       <div className="container">
         <Reveal>
           <SectionHeading
-            number="02"
-            label="MY TOOLKIT"
-            title="The right tools. Connected."
-            description="A practical stack for taking an idea from its first experiment to a product people use."
+            number="04"
+            label="SKILLS"
+            title="Tools I work with."
+            description="Languages, frameworks, and tools I use across my projects and day-to-day work."
           />
           <Skills />
         </Reveal>
@@ -99,7 +89,7 @@ export function ExperienceSection({ full = false }: { full?: boolean }) {
         <SectionHeading
           number="03"
           label="THE JOURNEY"
-          title="Built through experience."
+          title="Where I've worked."
           description="From mobile products to production web platforms—and now, interactive AI."
         />
       </Reveal>
@@ -164,9 +154,9 @@ const selected = [
   {
     index: 0,
     kind: "arc" as const,
-    title: "A playground for intelligence.",
-    role: "Full-stack development · Quess Corp × Ethara.ai",
-    text: "Making AI games interactive through a platform for playing ARC-AGI-3 games, with real-time interactions and analytics.",
+    title: "My work on an interactive AI games platform",
+    role: "Full-stack development · Quess Corp",
+    text: "I work on gameplay interactions, user authentication, and activity tracking for a platform built around ARC-AGI-3 games.",
     features: [
       "Interactive gameplay",
       "Multi-user authentication",
@@ -178,9 +168,9 @@ const selected = [
   {
     index: 3,
     kind: "commerce" as const,
-    title: "From discovery to checkout.",
+    title: "Building a storefront and its backend",
     role: "Full-stack development",
-    text: "A complete commerce experience connecting a dynamic storefront, headless content management, checkout, and order tracking.",
+    text: "I built a headless CMS and connected product management, checkout, payments, and order tracking across the storefront and backend.",
     features: [
       "Headless CMS",
       "Payment integration",
@@ -192,9 +182,9 @@ const selected = [
   {
     index: 8,
     kind: "mobile" as const,
-    title: "Everyday services. Less friction.",
+    title: "Developing a laundry booking app at iWashhub",
     role: "Flutter & backend development · iWashhub",
-    text: "A laundry booking app built from scratch, connecting pickup scheduling, location services, payments, and real-time order tracking.",
+    text: "I built this Flutter app from scratch, integrating pickup scheduling, Google Maps, Razorpay payments, and order tracking.",
     features: [
       "Google Maps integration",
       "Razorpay payments",
@@ -210,10 +200,10 @@ export function ProjectsSection() {
       <div className="container">
         <Reveal>
           <SectionHeading
-            number="04"
-            label="SELECTED WORK"
-            title="Ideas, engineered into products."
-            description="A closer look at the platforms and experiences I've helped bring to life."
+            number="01"
+            label="SELECTED PROJECTS"
+            title="Some things I've worked on."
+            description="Selected work from my professional roles. Here's what I built and where I contributed."
           />
         </Reveal>
         <div className="showcase-list">
@@ -236,7 +226,7 @@ export function ProjectsSection() {
                     <Tags items={project.tech} />
                     <details>
                       <summary>
-                        Explore the build <Icon name="arrow" />
+                        My role & project details <Icon name="arrow" />
                       </summary>
                       <div className="project-details">
                         <span className="small-label">THE CHALLENGE</span>
@@ -273,8 +263,8 @@ export function AISection() {
         <div className="ai-panel">
           <SectionHeading
             number="05"
-            label="APPLIED INTELLIGENCE"
-            title="Where code gets curious."
+            label="PERSONAL PROJECTS & AI"
+            title="What I've been exploring."
             description="Exploring how machine learning can turn everyday interactions into more useful experiences."
           />
           <div className="ai-grid">
@@ -283,8 +273,7 @@ export function AISection() {
                 <Icon name="nodes" /> COMPUTER VISION × MUSIC
               </span>
               <h3>
-                A little more human.
-                <br />A little more intelligent.
+                Emotion Music Player
               </h3>
               <p>
                 My Emotion Music Player uses webcam-based emotion detection to
@@ -322,7 +311,7 @@ export function AISection() {
                   analytics.
                 </p>
                 <a className="text-link" href="#projects">
-                  Explore the platform <Icon name="arrow" />
+                  See my work on this project <Icon name="arrow" />
                 </a>
               </article>
               <article>
@@ -355,12 +344,10 @@ export function ContactSection() {
           <div className="contact-heading">
             <div>
               <div className="eyebrow">
-                <span>06 /</span> WHAT'S NEXT?
+                <span>06 /</span> GET IN TOUCH
               </div>
               <h2>
-                Good things start
-                <br />
-                with a <em>conversation.</em>
+                Want to say <em>hello?</em>
               </h2>
             </div>
             <span className="contact-mark" aria-hidden="true">
@@ -370,9 +357,9 @@ export function ContactSection() {
           <div className="contact-bottom">
             <div>
               <p>
-                Have an interesting problem, a product idea, or an opportunity?
+                If you'd like to talk about a role, collaborate on a project,
                 <br />
-                Let's build something worth putting into the world.
+                or ask about my work, I'd love to hear from you.
               </p>
               <ContactActions />
             </div>

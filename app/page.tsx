@@ -1,6 +1,5 @@
 import { pageMetadata } from "./data/site";
 import Link from "next/link";
-import EngineeringMap from "./components/EngineeringMap";
 import {
   AboutSection,
   SkillsSection,
@@ -15,105 +14,48 @@ export const metadata = pageMetadata("/");
 export default function Home() {
   return (
     <>
-      <section id="home" className="hero container">
+      <section id="home" className="hero personal-hero container">
         <div className="hero-grid">
           <div className="hero-copy">
-            <div className="availability">
-              <span className="status-dot" /> OPEN TO OPPORTUNITIES{" "}
-              <span className="availability-line" /> BASED IN INDIA
-            </div>
-            <div className="hero-intro">
-              Hi, I'm Sarbesh <span aria-hidden="true">↗</span>
-            </div>
-            <h1>
-              Engineering
-              <br />
-              what's next<span className="brand-dot">.</span>
-            </h1>
-            <div className="hero-role">
-              <span>AI / ML ENGINEER</span>
-              <i /> FULL-STACK DEVELOPER
-            </div>
+            <div className="hero-intro">Hello, I'm</div>
+            <h1>Sarbesh<br />Kumar Tiwari<span className="brand-dot">.</span></h1>
+            <p className="personal-role">Full-stack developer & AI/ML engineer</p>
             <p className="hero-description">
-              Intelligent systems. Seamless experiences.
-              <br />I bring AI and full-stack engineering together to turn
-              complex ideas into products that work.
+              I write code, build web and mobile apps, and explore machine learning.
+              Based in Noida, India, this is a collection of my work and what
+              I&apos;ve learned along the way.
             </p>
             <div className="hero-actions">
-              <a className="btn-primary" href="#projects">
-                Explore my work <Icon name="arrow" />
-              </a>
-              <Link className="btn-secondary" href="/contact">
-                Let's connect <Icon name="external" />
-              </Link>
+              <a className="btn-primary" href="#projects">View my projects <Icon name="down" /></a>
+              <a className="btn-secondary" href={profile.resume} download>Download résumé <Icon name="down" /></a>
             </div>
             <div className="hero-socials">
-              <a href={profile.github} target="_blank" rel="noreferrer">
-                GitHub <Icon name="external" />
-              </a>
-              <a href={profile.linkedin} target="_blank" rel="noreferrer">
-                LinkedIn <Icon name="external" />
-              </a>
-              <a href={`mailto:${profile.email}`}>
-                Email <Icon name="external" />
-              </a>
-              <span className="hero-location">
-                <Icon name="location" /> Noida, India
-              </span>
+              <a href={profile.github} target="_blank" rel="noreferrer">GitHub <Icon name="external" /></a>
+              <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn <Icon name="external" /></a>
+              <a href={`mailto:${profile.email}`}>Email me <Icon name="external" /></a>
             </div>
           </div>
-          <EngineeringMap />
+          <aside className="personal-note" aria-label="A little about me">
+            <span className="small-label">A LITTLE CONTEXT</span>
+            <p className="note-intro">A developer.<br />A curious mind.<br /><em>Always learning.</em></p>
+            <dl>
+              <div><dt>Currently</dt><dd>Working on interactive AI at<br />Quess Corp</dd></div>
+              <div><dt>Studied</dt><dd>B.Tech in Data Science &<br />Artificial Intelligence</dd></div>
+              <div><dt>Interests</dt><dd>Web, mobile, computer vision<br />and experiments in AI</dd></div>
+            </dl>
+            <Link href="/about" className="text-link">More about me <Icon name="arrow" /></Link>
+          </aside>
         </div>
-        <div className="hero-bottom">
-          <span>
-            <span className="status-dot" /> CURRENTLY BUILDING AT{" "}
-            <strong>Ethara.ai</strong>
-          </span>
-          <a href="#about">
-            SCROLL TO EXPLORE <Icon name="down" />
-          </a>
+        <div className="personal-meta">
+          <span><span className="status-dot" /> Open to opportunities</span>
+          <span><Icon name="location" /> Noida, India</span>
+          <a href="#projects">Selected work below <Icon name="down" /></a>
         </div>
       </section>
-      <div className="proof-strip">
-        <div className="container proof-grid">
-          <div>
-            <strong>2+</strong>
-            <span>
-              Years of engineering
-              <br />
-              experience
-            </span>
-          </div>
-          <div>
-            <strong>15</strong>
-            <span>
-              Projects across web,
-              <br />
-              mobile & AI
-            </span>
-          </div>
-          <div>
-            <strong>10+</strong>
-            <span>
-              Production applications
-              <br />
-              deployed on AWS
-            </span>
-          </div>
-          <div>
-            <Icon name="nodes" />
-            <span>
-              B.Tech in
-              <br />
-              <strong className="degree-label">Data Science & AI</strong>
-            </span>
-          </div>
-        </div>
-      </div>
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
       <ProjectsSection />
+      <AboutSection />
+      <ExperienceSection />
+      <SkillsSection />
       <AISection />
       <ContactSection />
     </>

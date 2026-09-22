@@ -7,8 +7,8 @@ export default function About() {
     <div className="page-container standalone-about">
       <div className="container page-header">
         <Link href="/#about">← Back to the portfolio</Link>
-        <div className="eyebrow">ENGINEER. BUILDER. ALWAYS CURIOUS.</div>
-        <h1>A whole-stack perspective.</h1>
+        <div className="eyebrow">ABOUT SARBESH</div>
+        <h1>My background & interests.</h1>
         <p>
           My journey began with Data Science & Artificial Intelligence at Shri
           Ramswaroop Memorial University (2020–2024), and grew through mobile

@@ -45,12 +45,10 @@ const assert = require("node:assert/strict");
   assert.equal(og.status(), 200);
   assert.match(og.headers()["content-type"], /image\/png/);
   await page.screenshot({ path: "artifacts/desktop-home.png" });
-  await page.getByRole("button", { name: /Experience.*React/ }).click();
-  assert.match(
-    await page.locator("#stack-description").innerText(),
-    /Responsive web/,
-  );
-  result.interactions.push("Engineering stack changes explanation");
+  assert.match(await page.locator("h1").innerText(), /Sarbesh/);
+  assert.equal(await page.locator(".engineering-map, .proof-strip").count(), 0);
+  assert.equal(await page.locator("section[id]").nth(1).getAttribute("id"), "projects");
+  result.interactions.push("Personal introduction and projects-first layout");
   await page
     .getByRole("button", { name: "AI & Machine Learning", exact: true })
     .click();
@@ -83,7 +81,9 @@ const assert = require("node:assert/strict");
       .getAttribute("aria-expanded"),
     "false",
   );
-  await page.waitForTimeout(800);
+  await page.waitForFunction(() =>
+    Math.abs(document.getElementById("skills").getBoundingClientRect().top - 88) < 5,
+  );
   assert.ok(
     Math.abs(
       (await page
