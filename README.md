@@ -55,4 +55,4 @@ Generated screenshots and verification output live in the ignored `artifacts/` d
 
 `app/data/site.ts` defines the canonical host and page-specific search/social titles and descriptions. Next.js generates the sitemap and robots.txt from that source. Person and WebSite structured data identify the portfolio and its author; the confirmation page remains noindex. The existing host, https://sarbeshtiwari.vercel.app, and Google verification token are preserved. Change `site.url` when moving to a custom domain.
 
-The favicon set includes a vector monogram, a multi-resolution ICO (16/32/48px), a 180px Apple touch icon, and 192/512px manifest icons. Social previews use the generated 1200?630 PNG.
+The favicon set includes a vector monogram, a multi-resolution ICO (16/32/48px), a 180px Apple touch icon, and 192/512px manifest icons. Social previews use the generated 1200?630 PNG. 
