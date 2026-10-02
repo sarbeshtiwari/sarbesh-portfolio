@@ -1,9 +1,64 @@
 import { Icon } from "./ui";
+// A three-step product flow, drawn in the same style as the storefront illustration.
+export type Flow = {
+  tone: "green" | "violet" | "blue" | "amber";
+  caption: string;
+  brand: [string, string];
+  icon: string;
+  steps: [string, string][];
+  line: string[];
+};
 export default function ProjectVisual({
   kind,
+  flow,
 }: {
-  kind: "arc" | "commerce" | "mobile";
+  kind: "arc" | "commerce" | "mobile" | "flow";
+  flow?: Flow;
 }) {
+  if (kind === "flow" && flow) {
+    return (
+      <div
+        className={`project-visual visual-commerce visual-flow tone-${flow.tone}`}
+        aria-label={`Concept diagram: ${flow.line.join(", then ")}`}
+        role="img"
+      >
+        <div className="visual-caption">
+          <span className="tiny-square" /> {flow.caption} <Icon name="external" />
+        </div>
+        <div className="commerce-concept">
+          <div className="commerce-header">
+            <span>
+              {flow.brand[0]}
+              <span className="brand-dot">{flow.brand[1]}</span>
+            </span>
+            <Icon name={flow.icon} />
+          </div>
+          <div className="commerce-products">
+            {flow.steps.map(([label, icon], i) => (
+              <div key={label}>
+                <div className={`product-object object-${i}`}>
+                  <Icon name={icon} />
+                </div>
+                <span>
+                  0{i + 1} / {label}
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="commerce-flow">
+            {flow.line.map((step, i) => (
+              <span key={step} className="flow-step">
+                {i > 0 && <span>→</span>} {step}
+              </span>
+            ))}
+          </div>
+        </div>
+        <span className="concept-label">
+          CONCEPT ILLUSTRATION · NOT A PRODUCT SCREENSHOT
+        </span>
+      </div>
+    );
+  }
   return (
     <div
       className={`project-visual visual-${kind}`}

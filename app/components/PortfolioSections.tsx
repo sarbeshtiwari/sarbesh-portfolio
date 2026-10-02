@@ -3,7 +3,7 @@ import { experiences, profile, projects } from "../data/portfolio";
 import { Icon, SectionHeading, Tags } from "./ui";
 import Reveal from "./Reveal";
 import Skills from "./Skills";
-import ProjectVisual from "./ProjectVisual";
+import ProjectVisual, { type Flow } from "./ProjectVisual";
 import ContactActions from "./ContactActions";
 
 export function AboutSection() {
@@ -150,10 +150,112 @@ export function ExperienceSection({ full = false }: { full?: boolean }) {
     </section>
   );
 }
-const selected = [
+type Showcase = {
+  project: string;
+  kind: "arc" | "commerce" | "mobile" | "flow";
+  flow?: Flow;
+  title: string;
+  role: string;
+  text: string;
+  features: string[];
+  challenge: string;
+};
+const selected: Showcase[] = [
   {
-    index: 0,
-    kind: "arc" as const,
+    project: "Reachout",
+    kind: "flow",
+    flow: {
+      tone: "green",
+      caption: "OUTREACH, ORGANISED",
+      brand: ["reach", "out."],
+      icon: "mail",
+      steps: [["Write", "mail"], ["Send", "send"], ["Track", "chart"]],
+      line: ["Contacts", "Personal emails", "Replies & applications"],
+    },
+    title: "Outreach and the job search in one place",
+    role: "Product, design & full-stack engineering · Personal product",
+    text: "I designed and built Reachout end to end: campaigns sent from the user's own email, reply detection that works out what each person wants, application tracking from the inbox, job matches and a no-code website builder.",
+    features: [
+      "Personal email & WhatsApp campaigns",
+      "Reply detection & application tracking",
+      "No-code one-page website builder",
+      "Encrypted at rest, deployed on Render + Netlify",
+    ],
+    challenge:
+      "Keep every message personal and sent from the user's own account, while keeping their data private and encrypted.",
+  },
+  {
+    project: "AdPilot",
+    kind: "flow",
+    flow: {
+      tone: "violet",
+      caption: "ATTENTION, MONETISED",
+      brand: ["ad", "pilot."],
+      icon: "spark",
+      steps: [["Model thinks", "spark"], ["One card", "layers"], ["Viewer earns", "check"]],
+      line: ["AI starts generating", "Sponsored card", "Viewer credited"],
+    },
+    title: "An ad network for AI thinking time",
+    role: "Architecture & full-stack engineering · Personal product",
+    text: "I built a browser extension that detects when ChatGPT, Claude or Gemini start generating and shows one sponsored card, plus the ad server and portals for advertisers, earners and the platform team.",
+    features: [
+      "Chrome extension (Manifest V3)",
+      "Geo targeting down to city and area",
+      "Prepaid wallets with Razorpay",
+      "Mandatory TOTP for admin accounts",
+    ],
+    challenge:
+      "Turn a few seconds of waiting into a fair, privacy-respecting ad slot: advertisers only ever see aggregates, never an earner's identity.",
+  },
+  {
+    project: "VoicePilot",
+    kind: "flow",
+    flow: {
+      tone: "blue",
+      caption: "VOICE, NOT KEYBOARD",
+      brand: ["voice", "pilot."],
+      icon: "mic",
+      steps: [["Speak", "mic"], ["Agent works", "code"], ["Hear reply", "volume"]],
+      line: ["Your voice", "Terminal AI agent", "Spoken reply"],
+    },
+    title: "Talking to terminal AI agents",
+    role: "Design & engineering · Open source",
+    text: "I built a voice layer that wraps any terminal agent (Claude, Codex, Aider, Ollama), reads its reply aloud when it finishes and types your next spoken prompt. Solo mode controls the computer itself.",
+    features: [
+      "Works with any terminal agent",
+      "Local speech recognition, no API keys",
+      "Solo mode with a custom wake word",
+      "macOS and Windows installers",
+    ],
+    challenge:
+      "Know when an agent has actually finished, without changing how the agent runs, and keep the user's voice on their machine.",
+  },
+  {
+    project: "Ziptat",
+    kind: "flow",
+    flow: {
+      tone: "amber",
+      caption: "FASHION IN 30 MINUTES",
+      brand: ["zip", "tat."],
+      icon: "bolt",
+      steps: [["Browse", "layers"], ["Order", "check"], ["Delivered", "location"]],
+      line: ["Customer app", "Seller & ops consoles", "Rider app"],
+    },
+    title: "A quick-commerce fashion platform",
+    role: "Full-stack & mobile engineering",
+    text: "I worked across the whole Ziptat platform: the NestJS API with its background worker and WebSocket gateway, the seller and ops consoles, the marketing site and the Flutter customer and rider apps.",
+    features: [
+      "Customer & rider Flutter apps",
+      "Seller studio & ops console",
+      "Real-time order updates",
+      "PostgreSQL/PostGIS location logic",
+    ],
+    challenge:
+      "Coordinate customers, sellers and riders in real time to deliver clothing within 30 minutes.",
+  },
+  {
+    project: "Arc-AGI-3 Games Platform",
+    kind: "arc",
     title: "My work on an interactive AI games platform",
     role: "Full-stack development · Quess Corp",
     text: "I work on gameplay interactions, user authentication, and activity tracking for a platform built around ARC-AGI-3 games.",
@@ -165,34 +267,6 @@ const selected = [
     challenge:
       "Bring game interactions and player activity into one usable platform.",
   },
-  {
-    index: 3,
-    kind: "commerce" as const,
-    title: "Building a storefront and its backend",
-    role: "Full-stack development",
-    text: "I built a headless CMS and connected product management, checkout, payments, and order tracking across the storefront and backend.",
-    features: [
-      "Headless CMS",
-      "Payment integration",
-      "Product & order management",
-    ],
-    challenge:
-      "Support a multi-faceted commerce portal designed for 10,000–15,000 daily users.",
-  },
-  {
-    index: 8,
-    kind: "mobile" as const,
-    title: "Developing a laundry booking app at iWashhub",
-    role: "Flutter & backend development · iWashhub",
-    text: "I built this Flutter app from scratch, integrating pickup scheduling, Google Maps, Razorpay payments, and order tracking.",
-    features: [
-      "Google Maps integration",
-      "Razorpay payments",
-      "Pickup & delivery tracking",
-    ],
-    challenge:
-      "Connect the entire laundry booking journey in a single mobile experience.",
-  },
 ];
 export function ProjectsSection() {
   return (
@@ -203,20 +277,21 @@ export function ProjectsSection() {
             number="01"
             label="SELECTED PROJECTS"
             title="Some things I've worked on."
-            description="Selected work from my professional roles. Here's what I built and where I contributed."
+            description="Products I've built recently, and selected work from my professional roles."
           />
         </Reveal>
         <div className="showcase-list">
           {selected.map((item, i) => {
-            const project = projects[item.index];
+            const project = projects.find((p) => p.title === item.project)!;
+            const live = project.url && project.url !== "#" && !project.url.includes("github.com") ? project.url : "";
             return (
               <Reveal key={project.title}>
                 <article className={`showcase ${i % 2 ? "reverse" : ""}`}>
-                  <ProjectVisual kind={item.kind} />
+                  <ProjectVisual kind={item.kind} flow={item.flow} />
                   <div className="showcase-copy">
                     <div className="project-kicker">
                       <span>
-                        0{i + 1} / {project.category}
+                        {String(i + 1).padStart(2, "0")} / {project.category}
                       </span>
                       <span className="project-status">{project.status}</span>
                     </div>
@@ -224,6 +299,20 @@ export function ProjectsSection() {
                     <h4>{item.title}</h4>
                     <p>{item.text}</p>
                     <Tags items={project.tech} />
+                    {(live || project.repo) && (
+                      <div className="showcase-links">
+                        {live && (
+                          <a className="text-link" href={live} target="_blank" rel="noreferrer">
+                            Visit live website <Icon name="external" />
+                          </a>
+                        )}
+                        {project.repo && (
+                          <a className="text-link" href={project.repo} target="_blank" rel="noreferrer">
+                            View the code <Icon name="external" />
+                          </a>
+                        )}
+                      </div>
+                    )}
                     <details>
                       <summary>
                         My role & project details <Icon name="arrow" />
@@ -249,7 +338,7 @@ export function ProjectsSection() {
         <div className="section-end">
           <span>More web platforms, mobile apps, and experiments.</span>
           <Link href="/projects" className="btn-secondary">
-            Explore all 15 projects <Icon name="arrow" />
+            Explore all {projects.length} projects <Icon name="arrow" />
           </Link>
         </div>
       </div>

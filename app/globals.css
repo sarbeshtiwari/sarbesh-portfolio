@@ -1196,6 +1196,88 @@ details[open] > summary > span {
   border-top: 1px solid #dce2d4;
   padding-top: 10px;
 }
+/* Product-flow illustrations (homepage showcase): the storefront layout in four tones. */
+.visual-flow .commerce-flow .flow-step > span {
+  margin-right: 4px;
+}
+.tone-green {
+  background: #e3ece7;
+  border-color: #d2e0d7;
+}
+.tone-green .brand-dot,
+.tone-green .commerce-header > .icon {
+  color: #0f6b54;
+}
+.tone-violet {
+  background: #e9e3f2;
+  border-color: #ded7ed;
+}
+.tone-violet .visual-caption,
+.tone-violet .concept-label,
+.tone-violet .commerce-flow,
+.tone-violet .commerce-products > div > span {
+  color: #756284;
+}
+.tone-violet .brand-dot,
+.tone-violet .commerce-header > .icon {
+  color: var(--accent);
+}
+.tone-violet .product-object {
+  background: #ece7f5;
+  color: #6f5fb8;
+}
+.tone-blue {
+  background: #e4e9f1;
+  border-color: #d5dcea;
+}
+.tone-blue .visual-caption,
+.tone-blue .concept-label,
+.tone-blue .commerce-flow,
+.tone-blue .commerce-products > div > span {
+  color: #5d6b84;
+}
+.tone-blue .brand-dot,
+.tone-blue .commerce-header > .icon {
+  color: #3c64a8;
+}
+.tone-blue .product-object {
+  background: #e6ebf3;
+  color: #5574a6;
+}
+.tone-amber {
+  background: #f0e9df;
+  border-color: #e6dccd;
+}
+.tone-amber .visual-caption,
+.tone-amber .concept-label,
+.tone-amber .commerce-flow,
+.tone-amber .commerce-products > div > span {
+  color: #7d6a52;
+}
+.tone-amber .brand-dot,
+.tone-amber .commerce-header > .icon {
+  color: #b5642a;
+}
+.tone-amber .product-object {
+  background: #f3ece2;
+  color: #a46e3f;
+}
+.showcase-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 22px;
+  margin: 4px 0 18px;
+}
+.archive-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin-top: auto;
+}
+.featured-badge {
+  color: var(--accent);
+  font-weight: 600;
+}
 .visual-mobile {
   background: #e7eaf0;
   border-color: #d7dce8;

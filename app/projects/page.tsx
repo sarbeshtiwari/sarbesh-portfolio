@@ -22,7 +22,7 @@ export default async function Projects({
         </p>
       </div>
       <ProjectsClient
-        initialFilter={filter === "ai" ? "AI & experiments" : "All projects"}
+        initialFilter={filter === "ai" ? "AI & experiments" : filter === "featured" ? "Featured" : "All projects"}
       />
     </div>
   );
